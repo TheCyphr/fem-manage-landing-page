@@ -1,0 +1,239 @@
+@layer base {
+    @font-face {
+        font-family: 'Be Vietnam Pro';
+        font-style: normal;
+        font-weight: 400;
+        src: url("fonts/BeVietnamPro-Regular.ttf") format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Be Vietnam Pro';
+        font-style: italic;
+        font-weight: 400;
+        src: url("fonts/BeVietnamPro-Italic.ttf") format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Be Vietnam Pro';
+        font-style: normal;
+        font-weight: 500;
+        src: url("fonts/BeVietnamPro-Medium.ttf") format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Be Vietnam Pro';
+        font-style: italic;
+        font-weight: 500;
+        src: url("fonts/BeVietnamPro-MediumItalic.ttf") format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Be Vietnam Pro';
+        font-style: normal;
+        font-weight: 700;
+        src: url("fonts/BeVietnamPro-Bold.ttf") format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Be Vietnam Pro';
+        font-style: italic;
+        font-weight: 700;
+        src: url("fonts/BeVietnamPro-BoldItalic.ttf") format('truetype');
+    }
+
+    :root {
+        --clr-primary-bright-red: hsl(12, 88%, 59%);
+        --clr-primary-dark-blue: hsl(228, 39%, 23%);
+        --clr-neutral-dark-grayish-blue: hsl(227, 12%, 61%);
+        --clr-neutral-very-dark-blue: hsl(233, 12%, 13%);
+        --clr-neutral-very-pale-red: hsl(13, 100%, 96%);
+        --clr-neutral-very-light-grey: hsl(0, 0%, 98%);
+
+        --fw-normal: 400;
+        --fw-medium: 500;
+        --fw-bold: 700;
+
+        --z-index-overlay: 100;
+        --z-index-overlay-content: 110;
+
+        --spacing-gutter: 1rem;
+    }
+
+    body {
+        font-family: "Be Vietnam Pro", serif;
+        font-size: 16px;
+        padding-block: 2rem;
+        background-image: url(images/bg-tablet-pattern.svg), url(images/bg-tablet-pattern.svg);
+        background-repeat: no-repeat;
+        background-position: top -5% right -50px, center right -200px;
+        background-size: contain;
+        margin: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        all: unset;
+        color: var(--clr-primary-dark-blue);
+        font-weight: bold;
+        display: block;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .btn {
+        border-radius: 1.5rem;
+        border: none;
+        padding: .75rem 1.5rem;
+    }
+
+    .btn-primary {
+        background-color: var(--clr-primary-bright-red);
+        color: white;
+    }
+
+    .btn-inverse {
+        color: var(--clr-primary-bright-red);
+        background-color: white;
+    }
+}
+
+@layer main {
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        position: relative;
+        padding-inline: calc(var(--spacing-gutter) * 1.5);
+
+        & .site-logo  {
+            max-width: 7rem;
+        }
+
+        & .nav-toggle {
+            border: none;
+            padding: 0.65rem 0.75rem;
+            background-image: url("images/icon-hamburger.svg");
+
+            &.is-active {
+                background-image: url("images/icon-close.svg");
+                background-repeat: no-repeat;
+            }
+        }
+
+        & .menu-items {
+            --padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            position: absolute;
+            top: 300%;
+            left: 0;
+            padding: var(--padding);
+            width: calc(100% - var(--padding) * 2);
+            background-color: white;
+            color: var(--clr-primary-dark-blue);
+            font-weight: 700;
+            z-index: var(--z-index-overlay-content);
+        }
+    }
+
+    .main-content {
+        display: grid;
+        row-gap: var(--spacing-gutter);
+
+        & > div:not(.core-feature-list) {
+            padding-inline: calc(var(--spacing-gutter) * 2);
+            text-align: center;
+        }
+
+        & .illustration-intro {
+            padding-block-start: calc(var(--spacing-gutter) * 3);
+
+            & img {
+                max-width: 100%;
+            }
+        }
+
+        & .site-intro {
+            & .text {
+                padding-block-end: calc(var(--spacing-gutter) * 2);
+            }
+
+            & .btn {
+                margin-block-end: calc(var(--spacing-gutter) * 4);
+            }
+        }
+
+        & .core-feature-list {
+            padding-inline-start: var(--spacing-gutter);
+
+            & .heading {
+                display: flex;
+                align-items: center;
+                gap: var(--spacing-gutter);
+                background-color: var(--clr-neutral-very-pale-red);
+                margin-block: calc(var(--spacing-gutter) * 2.5) var(--spacing-gutter);
+            }
+
+            & .text {
+                padding-inline-end: var(--spacing-gutter);
+            }
+        }
+
+        & .testimonials {
+            & .heading {
+                padding-block: calc(var(--spacing-gutter) * 4);
+            }
+
+            & img {
+                border-radius: 50%;
+            }
+
+            & .carousel {
+                .item-selector {
+                    display: flex;
+                    gap: var(--spacing-gutter);
+                }
+
+                button {
+                    --clr-button: var(--clr-primary-bright-red);
+                    border: 2px solid var(--clr-button);
+
+                    &.is-active {
+                        background-color: var(--clr-button);
+                    }
+                }
+
+
+            }
+        }
+    }
+
+
+    .footer {
+        background-color: var(--clr-neutral-very-dark-blue);
+        color: white;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: var(--z-index-overlay);
+        height: 100vh;
+        width: 100vw;
+        background: linear-gradient(to bottom, transparent, hsl(0deg 0% 0% / 70%))
+    }
+
+    .text-heading {
+        padding-block-end: var(--spacing-gutter);
+    }
+}
+
+@layer utilities {
+    .d-none {
+        display: none;
+    }
+}
