@@ -65,7 +65,7 @@
         padding-block: 2rem;
         background-image: url(images/bg-tablet-pattern.svg), url(images/bg-tablet-pattern.svg);
         background-repeat: no-repeat;
-        background-position: top -5% right -50px, center right -200px;
+        background-position: top -5% right -50px, top 24% right -235px;
         background-size: contain;
         margin: 0;
     }
@@ -84,7 +84,14 @@
     .btn {
         border-radius: 1.5rem;
         border: none;
+    }
+
+    .btn-sm {
         padding: .75rem 1.5rem;
+    }
+
+    .btn-md {
+        padding: .85rem 1.75rem;
     }
 
     .btn-primary {
@@ -140,11 +147,13 @@
     }
 
     .main-content {
+        --main-content-padding-inline: calc(var(--spacing-gutter) * 2);
         display: grid;
         row-gap: var(--spacing-gutter);
+        overflow-x: hidden;
 
-        & > div:not(.core-feature-list) {
-            padding-inline: calc(var(--spacing-gutter) * 2);
+        & > div:not(.core-feature-list, .testimonials) {
+            padding-inline: var(--main-content-padding-inline);
             text-align: center;
         }
 
@@ -183,6 +192,10 @@
         }
 
         & .testimonials {
+            --padding-inline: calc(var(--spacing-gutter) * 3);
+            padding-inline: var(--padding-inline);
+            text-align: center;
+
             & .heading {
                 padding-block: calc(var(--spacing-gutter) * 4);
             }
@@ -192,21 +205,42 @@
             }
 
             & .carousel {
-                .item-selector {
-                    display: flex;
-                    gap: var(--spacing-gutter);
-                }
+                --width: calc(100vw - var(--padding-inline) * 2);
+                display: grid;
+                grid-auto-flow: column;
+                max-width: var(--width);
+                position: relative;
+                gap: var(--padding-inline);
 
-                button {
+                & > div {
+                    width: var(--width);
+                    display: flex;
+                    gap: calc(var(--spacing-gutter) * 2);
+                    flex-direction: column;
+                    align-items: center;
+
+                    & img {
+                        max-width: 30%;
+                    }
+                }
+            }
+
+            .button-wrapper {
+                display: flex;
+                gap: var(--spacing-gutter);
+                justify-content: center;
+                padding-block: calc(var(--spacing-gutter) * 3);
+
+                & button {
                     --clr-button: var(--clr-primary-bright-red);
                     border: 2px solid var(--clr-button);
+                    border-radius: 50%;
+                    padding: 0.25rem;
 
                     &.is-active {
                         background-color: var(--clr-button);
                     }
                 }
-
-
             }
         }
     }

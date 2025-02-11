@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     createNavToggleEventHandler();
+    initCarousel();
 });
 
 function createNavToggleEventHandler() {
@@ -35,24 +36,45 @@ function createNavToggleEventHandler() {
     });
 }
 
-function setUpCarousel() {
-    let carousel = document.querySelector(".carousel");
-    let itemSelector = document.createElement("div");
-    itemSelector.classList.add("item-selector");
+function initCarousel() {
+    const carousel = document.querySelector(".carousel");
+    carousel.style.gridTemplateColumns = `repeat(${carousel.children.length * 2 - 1}, var(--width))`;
+    carousel.style.right = `calc((100vw - var(--padding-inline)) * ${carousel.children.length - 1})`;
+
+    const buttonWrapper = document.createElement("div");
+    buttonWrapper.classList.add("button-wrapper");
+
+    let activeButton = undefined;
+    let activeIndex = 0;
+    const INDEX_OFFSET = carousel.children.length;
 
     for (let i = 0; i < carousel.children.length; i++) {
-        let button = document.createElement("button");
+        const childDiv = carousel.children[i];
+        childDiv.style.gridColumnStart = "" + (i + INDEX_OFFSET);
+        const button = document.createElement("button");
 
-        if (i === 0){
+        if (i === activeIndex){
             button.classList.add("is-active");
+            activeButton = button;
         }
 
         button.addEventListener("click", () => {
-            button.classList.add("is-active");
-            carousel.querySelector("button.active").classList.remove("is-active");
+            activeButton.classList.toggle("is-active");
+            button.classList.toggle("is-active");
+            activeButton = button;
+            updateOrder(i);
         })
-        itemSelector.append(button);
+        buttonWrapper.append(button);
     }
 
-    
+    carousel.after(buttonWrapper);
+
+    function updateOrder(index){
+        for (let i = 0; i < carousel.children.length; i++) {
+            const childDiv = carousel.children[i];
+            childDiv.style.gridColumnStart = String(i - index + INDEX_OFFSET);
+        }
+
+        activeIndex = index;
+    }
 }
