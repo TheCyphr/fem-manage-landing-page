@@ -45,7 +45,6 @@ function initCarousel() {
     buttonWrapper.classList.add("button-wrapper");
 
     let activeButton = undefined;
-    let activeIndex = 0;
     const INDEX_OFFSET = carousel.children.length;
 
     for (let i = 0; i < carousel.children.length; i++) {
@@ -53,7 +52,7 @@ function initCarousel() {
         childDiv.style.gridColumnStart = "" + (i + INDEX_OFFSET);
         const button = document.createElement("button");
 
-        if (i === activeIndex){
+        if (i === 0){
             button.classList.add("is-active");
             activeButton = button;
         }
@@ -74,7 +73,5 @@ function initCarousel() {
             const childDiv = carousel.children[i];
             childDiv.style.gridColumnStart = String(i - index + INDEX_OFFSET);
         }
-
-        activeIndex = index;
     }
 }

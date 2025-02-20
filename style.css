@@ -68,6 +68,7 @@
         background-position: top -5% right -50px, top 24% right -235px;
         background-size: contain;
         margin: 0;
+        letter-spacing: -0.9px;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -192,7 +193,7 @@
         }
 
         & .testimonials {
-            --padding-inline: calc(var(--spacing-gutter) * 3);
+            --padding-inline: calc(var(--spacing-gutter) * 2.5);
             padding-inline: var(--padding-inline);
             text-align: center;
 
