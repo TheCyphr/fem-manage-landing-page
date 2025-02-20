@@ -38,14 +38,11 @@ function createNavToggleEventHandler() {
 
 function initCarousel() {
     const carousel = document.querySelector(".carousel");
-    carousel.style.gridTemplateColumns = `repeat(${carousel.children.length * 2 - 1}, var(--width))`;
-    carousel.style.right = `calc((100vw - var(--padding-inline)) * ${carousel.children.length - 1})`;
-
     const buttonWrapper = document.createElement("div");
     buttonWrapper.classList.add("button-wrapper");
 
     let activeButton = undefined;
-    const INDEX_OFFSET = carousel.children.length;
+    const INDEX_OFFSET = 2;
 
     for (let i = 0; i < carousel.children.length; i++) {
         const childDiv = carousel.children[i];
@@ -71,7 +68,16 @@ function initCarousel() {
     function updateOrder(index){
         for (let i = 0; i < carousel.children.length; i++) {
             const childDiv = carousel.children[i];
-            childDiv.style.gridColumnStart = String(i - index + INDEX_OFFSET);
+            childDiv.style.gridColumnStart = String(carouselClamp(i - index + INDEX_OFFSET));
         }
     }
+
+    function carouselClamp(number){
+        return clamp(number, 1, 3);
+    }
 }
+
+function clamp(number, min, max) {
+    return Math.max(min, Math.min(number, max));
+}
+
