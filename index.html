@@ -10,7 +10,7 @@
 </head>
 <body>
 <nav class="nav">
-  <img class="site-logo" src="images/logo.svg" alt="site logo">
+  <img class="nav-site-logo" src="images/logo.svg" alt="site logo">
   <div id="menuItems" class="menu-items d-none">
     <div>Pricing</div>
     <div>Product</div>
@@ -33,9 +33,9 @@
       Manage makes it simple for software teams to plan day-to-day
       tasks while keeping the larger team goals in view.
     </div>
-    <button class="btn btn-primary btn-md">Get Started</button>
+    <button class="btn btn-primary padding-text-md">Get Started</button>
   </div>
-  <div>
+  <div class="selling-point">
     <h1 class="text-heading">What’s different about Manage?</h1>
 
     Manage provides all the functionality your team needs, without
@@ -43,20 +43,20 @@
     product teams.
   </div>
   <div class="core-feature-list">
-    <h3 class="heading"><button class="btn btn-primary btn-sm">01</button>Track company-wide progress</h3>
+    <h3 class="heading"><button class="btn btn-primary padding-text-sm">01</button>Track company-wide progress</h3>
     <div class="text">
       See how your day-to-day tasks fit into the wider vision. Go from
       tracking progress at the milestone level all the way done to the
       smallest of details. Never lose sight of the bigger picture again.
     </div>
 
-    <h3 class="heading"><button class="btn btn-primary btn-sm">02</button> Advanced built-in reports</h3>
+    <h3 class="heading"><button class="btn btn-primary padding-text-sm">02</button> Advanced built-in reports</h3>
     <div class="text">Set internal delivery estimates and track progress toward company
       goals. Our customisable dashboard helps you build out the reports
       you need to keep key stakeholders informed.
     </div>
 
-    <h3 class="heading"><button class="btn btn-primary btn-sm">03</button>Everything you need in one place</h3>
+    <h3 class="heading"><button class="btn btn-primary padding-text-sm">03</button>Everything you need in one place</h3>
     <div class="text">
       Stop jumping from one service to another to communicate, store files,
       track tasks and share documents. Manage offers an all-in-one team
@@ -100,26 +100,42 @@
         </div>
       </div>
     </div>
-    <div><button class="btn btn-primary btn-md">Get Started</button></div>
-    <div class="get-started">
-      <div>Simplify how your team works today.</div>
-      <div><button class="btn btn-inverse btn-md">Get Started</button></div>
-    </div>
+    <div><button class="btn btn-primary padding-text-md">Get Started</button></div>
+  </div>
+  <div class="get-started">
+    <div>Simplify how your team works today.</div>
+    <div><button class="btn btn-inverse padding-text-md">Get Started</button></div>
   </div>
 </div>
 <footer class="footer">
-  Home
-  Pricing
-  Products
-  About Us
-  Careers
-  Community
-  Privacy Policy
-
-  Updates in your inbox…
-  Go
-
-  Copyright 2020. All Rights Reserved
+  <div>
+    <input class="input padding-text-md" id="emailSubscription" type="text" placeholder="Updates in your inbox…"><label for="emailSubscription">
+    <button class="btn btn-primary padding-text-md">Go</button></label>
+  </div>
+  <div class="footer-links">
+    <ul>
+      <li>Home</li>
+      <li>Pricing</li>
+      <li>Products</li>
+      <li>About Us</li>
+    </ul>
+    <ul>
+      <li>Careers</li>
+      <li>Community</li>
+      <li>Privacy Policy</li>
+    </ul>
+  </div>
+  <div class="social-links">
+    <img src="images/icon-facebook.svg" alt="facebook">
+    <img src="images/icon-youtube.svg" alt="youtube">
+    <img src="images/icon-twitter.svg" alt="twitter">
+    <img src="images/icon-pinterest.svg" alt="pinterest">
+    <img src="images/icon-instagram.svg" alt="instagram">
+  </div>
+  <div class="footer-site-logo">
+    <img src="images/logo.svg" alt="site logo">
+  </div>
+  <div class="copyright">Copyright 2020. All Rights Reserved</div>
 </footer>
 </body>
 </html>
